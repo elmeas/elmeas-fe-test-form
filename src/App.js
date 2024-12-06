@@ -1,5 +1,7 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import { FormPage } from "./pages/FormPage.js";
 
 function App() {
   return (
@@ -17,7 +19,19 @@ function App() {
         >
           Learn React
         </a>
+        <Link to="/some/form/123">Form 123</Link>
       </header>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div className="App">{/* ... existing App content ... */}</div>
+            }
+          />
+          <Route path="/some/form/:id" element={<FormPage />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
